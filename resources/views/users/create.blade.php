@@ -4,6 +4,11 @@
 
 @section("content")
     <div class="col-md-8">
+        @if(session('status'))
+            <div class="alert alert-success">
+                {{session('status')}}
+            </div>
+        @endif
         <h1>Create New User</h1>
         <form enctype="multipart/form-data" class="bg-white shadow-sm p-3" action="{{route('users.store')}}" method="POST">
             @csrf
@@ -53,7 +58,7 @@
             <label for="password_confirmation">Password Confirmation</label>
             <input class="form-control" placeholder="password confirmation" type="password" name="password_confirmation" id="password_confirmation"/>
             <br>
-            <input class="btn btn-primary" type="submit" value="Save"/>
+            <input class="btn btn-primary" type="submit" value="Save">
         </form>
     </div>
 
