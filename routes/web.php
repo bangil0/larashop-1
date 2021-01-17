@@ -18,5 +18,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::match(['get', 'post'], '/register', function() {
+    return redirect('/login');
+})->name('register');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
