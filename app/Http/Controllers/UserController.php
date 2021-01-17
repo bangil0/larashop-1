@@ -43,6 +43,10 @@ class UserController extends Controller
         $new_user->phone = $request->get('phone');
         $new_user->email = $request->get('email');
         $new_user->password = \Hash::make($request->get('password'));
+        if($request->file('avatar')) {
+            $file = $request->file('avatar')->store('avatars', 'public');
+            $new_user->avatar = $file;
+        }
     }
 
     /**
