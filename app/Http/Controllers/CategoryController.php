@@ -79,7 +79,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category_to_edit = Category::findOrFail($id);
+
+        return view('categories.edit', ['category_to_edit' => $category_to_edit]);
     }
 
     /**
