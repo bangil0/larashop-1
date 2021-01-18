@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -34,7 +35,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->get('name');
+
+        $new_category = new Category;
+        $new_category->name = $name;
+
+        if($request->file('image')) {
+            $image_path = $request->file('image')->store('category_images', 'public');
+
+            $new_category->image = $image_path;
+            $new_category->created_by = \Auth::user()->id;
+            $new_category->slug = \Str::slug($name, '-');
+
+            $new_category->save();
+        }
+        
+        return redirect()->route('categories.create')->with('status', 'Category successfully created');
     }
 
     /**
