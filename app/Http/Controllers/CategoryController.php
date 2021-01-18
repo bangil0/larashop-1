@@ -133,4 +133,8 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.index')->with('status', 'Category successfully moved to trash');
     }
+
+    public function trash() {
+        
+    }
 }
