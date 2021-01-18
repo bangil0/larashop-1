@@ -135,6 +135,7 @@ class CategoryController extends Controller
     }
 
     public function trash() {
-        
+        $categories = Category::onlyTrashed()->paginate(10);
+        return view('categories.trash', ['categories' => $categories]);
     }
 }
