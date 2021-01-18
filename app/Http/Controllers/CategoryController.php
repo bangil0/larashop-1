@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::paginate(10);
+        return view('categories.index', ['categories' => $categories]);
     }
 
     /**
@@ -49,7 +50,7 @@ class CategoryController extends Controller
 
             $new_category->save();
         }
-        
+
         return redirect()->route('categories.create')->with('status', 'Category successfully created');
     }
 
