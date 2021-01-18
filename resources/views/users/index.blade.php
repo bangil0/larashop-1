@@ -32,10 +32,11 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12 text-right mb-3">
+        <div class="col-md-12 text-right">
             <a href="{{route('users.create')}}" class="btn btn-primary">Create user</a>
         </div>
     </div>
+    <br>
 
     <table class="table table-bordered">
         <thead>
@@ -80,6 +81,13 @@
                 </tr>
             @endforeach
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan=10>
+                    {{$users->links()}}
+                </td>
+            </tr>
+        </tfoot>
     </table>
 
 @endsection
