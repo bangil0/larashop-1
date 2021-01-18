@@ -138,4 +138,16 @@ class CategoryController extends Controller
         $categories = Category::onlyTrashed()->paginate(10);
         return view('categories.trash', ['categories' => $categories]);
     }
+
+    public function restore($id) {
+        $category = Category::withTrashed()->findOrFail($id);
+
+        if($category->trashed()) {
+            $category->restore();
+        } else {
+            return redirect()->route('categories.index')->with('status', 'Category is not in trash');
+        }
+        return redirect()->route('categories.index')->with('status', 'Category successfully restored');
+    }
+
 }
