@@ -93,7 +93,29 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $name = $request->get('name');
+        $slug = $request->get('slug');
+
+        $category = Category::findOrFail($id);
+
+        $category->name = $name;
+        $category->slug = $slug;
+
+        if($request->file('image')) {
+            if($category->image && file_exists(storage_path('app/public/' . $category->image))) {
+                \Storage::delete('public/' . $category->name);
+            }
+
+            $new_image = $request->file('image')->store('category_images', 'public');
+
+            $category->image = $new_image;
+        }
+
+        $category->updated_by = \Auth::user()->id;
+        $category->slug = \Str::slug($name);
+        $category->save();
+
+        return redirect()->route('categories.edit', [$id])->with('status', 'Category successfully updated');
     }
 
     /**

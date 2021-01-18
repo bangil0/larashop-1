@@ -4,6 +4,13 @@
 
 @section('content')
     <div class="col-md-8">
+
+        @if(session('status'))
+            <div class="alert alert-success">
+                {{session('status')}}
+            </div>
+        @endif
+
         <form action="{{route('categories.update', [$category->id])}}" enctype="multipart/form-data" method="POST" class="bg-white shadow-sm p-3">
             @csrf
             <input type="hidden" value="PUT" name="_method">
