@@ -62,7 +62,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrdFail($id);
+        return view('users.show', ['user' => $user]);
     }
 
     /**
