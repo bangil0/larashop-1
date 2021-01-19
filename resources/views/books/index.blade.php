@@ -54,6 +54,13 @@
                             <td>{{$book->price}}</td>
                             <td>
                                 <a href="{{route('books.edit', [$book->id])}}" class="btn btn-info btn-sm"> Edit </a>
+
+                                <form method="POST" class="d-inline" onsubmit="return confirm('Move book to trash?')" action="{{route('books.destroy', [$book->id])}}">
+                                    @csrf
+                                    <input type="hidden" value="DELETE" name="_method">
+
+                                    <input type="submit" value="Trash" class="btn btn-danger btn-sm">
+                                </form>
                             </td>
                         </tr>
                     @endforeach
