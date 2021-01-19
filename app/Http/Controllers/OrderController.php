@@ -58,7 +58,8 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = Order::findOrFail($id);
+        return view('orders.edit', ['order' => $order]);
     }
 
     /**
