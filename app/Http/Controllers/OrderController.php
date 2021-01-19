@@ -71,7 +71,12 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Order::findOrFail($id);
+
+        $order->status = $request->get('status');
+        $order->save();
+
+        return redirect()->route('orders.edit', [$order->id])->with('status', 'Order status successfully updated');
     }
 
     /**
