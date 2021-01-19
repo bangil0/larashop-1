@@ -6,6 +6,13 @@
 
     <div class="row">
         <div class="col-md-12">
+
+            <div class="row mb-3">
+                <div class="col-md-12 text-right">
+                    <a href="{{route('books.create')}}" class="btn btn-primary">Create book</a>
+                </div>
+            </div>
+
             <table class="table table-bordered table-stripped">
                 <thead>
                     <tr>
