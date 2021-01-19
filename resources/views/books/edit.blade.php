@@ -6,6 +6,13 @@
 
     <div class="row">
         <div class="col-md-8">
+
+            @if(session('status'))
+                <div class="alert alert-success">
+                    {{session('status')}}
+                </div>
+            @endif
+
             <form enctype="multipart/form-data" method="POST" action="{{route('books.update', [$book->id])}}" class="p-3 shadow-sm bg-white">
                 @csrf
                 <input type="hidden" name="_method" value="PUT">
@@ -85,5 +92,5 @@
             $('#categories').append(option).trigger('change');
         });
     </script>
-    
+
 @endsection
