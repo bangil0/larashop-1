@@ -12,6 +12,15 @@
                 </div>
             @endif
 
+            <form action="{{route('books.index')}}">
+                <div class="input-group">
+                    <input name="keyword" type="text" value="{{Request::get('keyword')}}"class="form-control" placeholder="Filter by title">
+                    <div class="input-group-append">
+                        <input type="submit" value="Filter" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+
             <div class="row">
                 <div class="col-md-6"></div>
                 <div class="col-md-6">
