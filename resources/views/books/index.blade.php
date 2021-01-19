@@ -7,6 +7,12 @@
     <div class="row">
         <div class="col-md-12">
 
+            @if(session('status'))
+                <div class="alert alert-success">
+                    {{session('status')}}
+                </div>
+            @endif
+
             <div class="row mb-3">
                 <div class="col-md-12 text-right">
                     <a href="{{route('books.create')}}" class="btn btn-primary">Create book</a>
