@@ -13,6 +13,6 @@ class Category extends Model
     use SoftDeletes;
 
     public function books() {
-        return $this->belongsToMany('Books');
+        return $this->belongsToMany(Book);
     }
 }
