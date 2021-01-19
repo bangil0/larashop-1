@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +41,5 @@ Route::get('/books/trash', [BookController::class, 'trash'])->name('books.trash'
 Route::post('/books/{id}/restore', [BookController::class, 'restore'])->name('books.restore');
 Route::delete('/books/{id}/delete-permanent', [BookController::class, 'deletePermanent'])->name('books.delete-permanent');
 Route::resource('books', BookController::class);
+
+Route::resource('orders', OrderController::class);
