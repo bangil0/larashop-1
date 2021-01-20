@@ -20,7 +20,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $status = $request->get('status');
         $buyer_email = $request->get('buyer_email');
