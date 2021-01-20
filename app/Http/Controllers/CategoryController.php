@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function __construct() {
         $this->middleware(function($request, $next) {
             if(Gate::allows('manage-categories')) return $next($request);
-            abort(403, 'Anda tidak memiliki hak akses untuk halaman ini.');
+            abort(403, 'Anda tidak memiliki cukup hak akses untuk halaman ini.');
         });
     }
 

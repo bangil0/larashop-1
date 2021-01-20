@@ -5,10 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 
 class BookController extends Controller
 {
+    public function __construct() {
+        $this->middleware(function($request, $next) {
+            if(Gate::allows('manage-books')) return $next($request);
+            abort(403, 'Anda tidak memiliki cukup hak akses untuk halaman ini.');
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *
